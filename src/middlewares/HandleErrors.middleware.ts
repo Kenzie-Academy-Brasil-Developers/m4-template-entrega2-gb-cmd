@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { AppError } from "./AppError";
+import { AppError } from "../errors/AppError";
 
 export class HandleErrors {
     static execute(err: Error, req: Request, res: Response, next: NextFunction) {
