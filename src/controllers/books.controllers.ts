@@ -12,7 +12,9 @@ export class BooksController {
     getBooks(req: Request, res: Response): Response {
         const booksServices = new BooksServices();
 
-        return res.status(200).json(booksServices.getBooks());
+        const queryParam = req.query.search as string;
+
+        return res.status(200).json(booksServices.getBooks(queryParam));
     }
 
     getOneBook(req: Request, res: Response): Response {

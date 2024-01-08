@@ -1,10 +1,12 @@
-export interface IBooks {
-    id: number;
-    name: string;
-    pages: number;
-    category?: string;
-    createdAt: Date;
-    updatedAt: Date;
+import { AnyZodObject, z } from "zod";
+import { bookSchema, createBookSchema, updateBookSchema } from "../schemas/books.schema";
+
+export type TBooks = z.infer<typeof bookSchema>;
+export type TCreateBook = z.infer<typeof createBookSchema>;
+export type TUpdateBook = z.infer<typeof updateBookSchema>;
+
+export interface RequestSchemas {
+    params?: AnyZodObject;
+    query?: AnyZodObject;
+    body?: AnyZodObject;
 }
-type TUpdateBook = Omit<IBooks, "id" | "createdAt" | "updatedAt">;
-export type TUpdatedBook = Partial<TUpdateBook>;
